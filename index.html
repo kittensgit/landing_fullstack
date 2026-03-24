@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHANTOM LIBERTY &#8212; Access Granted</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="tag">&gt; CLASSIFIED_ACCESS // PHANTOM_LIBERTY</div>
+            <h1>PHANTOM LIBERTY</h1>
+            <div class="subtitle">CYBERPUNK 2077 &#8212; EXPANSION</div>
+        </div>
+
+        <!-- Локальное видео: положи файл video.mp4 в папку проекта -->
+        <div class="video-wrap">
+            <video id="main-video" controls preload="metadata">
+                <source src="video.mp4" type="video/mp4" />
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+
+        <div id="countdown-area">
+            <div class="countdown-label">// доступ откроется через</div>
+            <div id="countdown-number">30</div>
+            <div class="countdown-hint">смотри видео чтобы продолжить</div>
+        </div>
+
+        <div id="form-area">
+            <div class="form-title">// запрос доступа &#8212; заполни данные</div>
+            <div class="form-grid">
+                <div class="field">
+                    <label>Имя</label>
+                    <input type="text" id="f-firstname" placeholder="V" />
+                    <span class="err-msg" id="e-firstname">// введи имя</span>
+                </div>
+                <div class="field">
+                    <label>Фамилия</label>
+                    <input type="text" id="f-lastname" placeholder="Morgan" />
+                    <span class="err-msg" id="e-lastname">// введи фамилию</span>
+                </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" id="f-email" placeholder="v@nightcity.net" />
+                    <span class="err-msg" id="e-email">// введи корректный email</span>
+                </div>
+                <div class="field">
+                    <label>Телефон</label>
+                    <input type="tel" id="f-phone" placeholder="+1 000 000 0000" />
+                    <span class="err-msg" id="e-phone">// введи телефон</span>
+                </div>
+            </div>
+            <button class="submit-btn" id="submit-btn">// ПОЛУЧИТЬ ДОСТУП //</button>
+            <div id="error-msg">// ошибка соединения &#8212; попробуй снова</div>
+        </div>
+
+        <div id="success-msg">
+            <div class="icon">&#10003;</div>
+            <h3>// ДОСТУП ПРЕДОСТАВЛЕН</h3>
+            <p>Данные приняты. Добро пожаловать в Night City.</p>
+        </div>
+
+        <div class="token-row">session // {clickid}</div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
