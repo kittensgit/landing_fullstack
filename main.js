@@ -396,6 +396,15 @@ BPixelJS.config({
 });
 BPixelJS.run();
 
+BPixelJS.onPixelLoaded(function () {
+    const clickId = getBinomClickId();
+    const tokenRow = document.querySelector('.token-row');
+    if (tokenRow) {
+        tokenRow.textContent =
+            'session // ' + (clickId || 'no_click_id');
+    }
+});
+
 let clientIP = '';
 fetch('https://api.ipify.org?format=json')
     .then((r) => r.json())
@@ -457,9 +466,21 @@ function revealForm() {
     countdownArea.style.display = 'none';
     formArea.classList.add('visible');
 
-  if (typeof fbq !== 'undefined') {
-    fbq('track', 'ViewContent');
-  }
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'ViewContent');
+    }
+
+    // Binom Event 1 — fires when form becomes visible after 30s watch time
+    BPixelJS.onPixelLoaded(function () {
+        const clickId = getBinomClickId();
+        if (clickId) {
+            const img = new Image();
+            img.src =
+                'https://clixtream.com/click?lp=1&event1=1&bcid=' +
+                encodeURIComponent(clickId);
+            img.referrerPolicy = 'no-referrer-when-downgrade';
+        }
+    });
 }
 
 function isValidPhone(value) {
@@ -547,6 +568,7 @@ document.getElementById('submit-btn').addEventListener('click', async () => {
         p1,
         fbclid,
         pixel_id: s3,
+        bcid: getBinomClickId() || '',
         ip: clientIP,
         user_agent: navigator.userAgent,
     };
