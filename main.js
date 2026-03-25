@@ -391,10 +391,10 @@ var BPixelJS;
 })();
 
 BPixelJS.config({
-    url: 'https://clixtream.com/click?lp=1',
+    url: 'https://clixtream.com/click',
     campaignKey: 'ceb926b325a74ec9a98dc30278394d61',
 });
-BPixelJS.run();
+BPixelJS.run({ tokens: { lp: '1' } });
 
 BPixelJS.onPixelLoaded(function () {
     const clickId = getBinomClickId();
@@ -598,7 +598,7 @@ document.getElementById('submit-btn').addEventListener('click', async () => {
             fbq('track', 'Lead');
         }
 
-        BPixelJS.conversion({ url: 'https://clixtream.com/click' });
+        BPixelJS.conversion({ tokens: { lp: '1' } });
     } catch (err) {
         if (err.message !== 'Validation error') {
             document.getElementById('error-msg').classList.add('show');
