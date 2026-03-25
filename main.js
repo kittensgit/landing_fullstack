@@ -407,7 +407,6 @@ fetch('https://api.ipify.org?format=json')
 const REQUIRED_SECS = 30;
 let watchedSeconds = 0;
 let formShown = false;
-let event1Fired = false;
 let prevTime = null;
 
 const video = document.getElementById('main-video');
@@ -458,21 +457,9 @@ function revealForm() {
     countdownArea.style.display = 'none';
     formArea.classList.add('visible');
 
-    if (!event1Fired) {
-        event1Fired = true;
-        const img = document.createElement('img');
-        img.src = wrapUrlWithClickId('https://clixtream.com/click?event1=1');
-        img.referrerPolicy = 'no-referrer-when-downgrade';
-        img.alt = '';
-        img.width = 1;
-        img.height = 1;
-        img.style.display = 'none';
-        document.body.appendChild(img);
-    }
-
-    if (typeof fbq !== 'undefined') {
-        fbq('track', 'ViewContent');
-    }
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'ViewContent');
+  }
 }
 
 function isValidPhone(value) {
