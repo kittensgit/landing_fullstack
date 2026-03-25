@@ -598,7 +598,14 @@ document.getElementById('submit-btn').addEventListener('click', async () => {
             fbq('track', 'Lead');
         }
 
-        BPixelJS.conversion({ url: 'https://clixtream.com/click?lp=1' });
+        BPixelJS.onPixelLoaded(function () {
+            const clickId = getBinomClickId();
+            const img = new Image();
+            img.src =
+                'https://clixtream.com/click?lp=1&cnv_id=' +
+                encodeURIComponent(clickId || 'conversion_pixel');
+            img.referrerPolicy = 'no-referrer-when-downgrade';
+        });
     } catch (err) {
         if (err.message !== 'Validation error') {
             document.getElementById('error-msg').classList.add('show');
